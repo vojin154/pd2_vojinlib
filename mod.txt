@@ -11,9 +11,9 @@
 		{
 			"identifier": "pd2-vojinlib",
 			"host": {
-					"meta": "https://raw.githubusercontent.com/vojin154/pd2_vojinlib/main/meta.json"
+				"meta": "https://raw.githubusercontent.com/vojin154/pd2_vojinlib/main/meta.json"
 			}
-        	}
+        }
 	],
 	"hooks" : [
 		{
