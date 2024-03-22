@@ -1,0 +1,24 @@
+{
+	"name" : "VojinLIB",
+	"description" : "A collection of functions to simplify my life a bit.",
+	"author" : "vojin154",
+	"contact" : "vojin154 (Discord)",
+	"version" : "1.0.0",
+	"priority" : 700,
+	"undisablable" : true,
+	"is_library" : true,
+	"updates": [
+		{
+			"identifier": "pd2-vojinlib",
+			"host": {
+					"meta": "https://raw.githubusercontent.com/vojin154/pd2_vojinlib/main/meta.json"
+			}
+        	}
+	],
+	"hooks" : [
+		{
+			"hook_id": "core/lib/system/coresystem",
+			"script_path": "main.lua"
+		}
+	]
+}
