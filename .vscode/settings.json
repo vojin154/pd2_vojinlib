@@ -1,5 +1,12 @@
 {
     "files.associations": {
         "mod.txt": "json"
-    }
+    },
+    "Lua.diagnostics.globals": [
+        "class",
+        "RequiredScript",
+        "file",
+        "ModPath",
+        "SavePath"
+    ]
 }

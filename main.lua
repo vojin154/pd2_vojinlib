@@ -1,18 +1,8 @@
----@diagnostic disable: undefined-field
-if not _G.VojinLIB then
-    _G.VojinLIB = _G.class()
-end
-
---Caching globals
-local VojinLIB = _G.VojinLIB
-local RequiredScript = _G.RequiredScript
-local file = _G.file
-local mod_path = _G.ModPath
-local save_path = _G.SavePath
+_G.VojinLIB = _G.VojinLIB or class()
 
 function VojinLIB:Setup()
-    self._mod_path = mod_path
-    self._save_path = save_path
+    self._mod_path = ModPath
+    self._save_path = SavePath
     self._req = {}
 
     --Now that it has different variables.. NO ONE CAN PROVE ME IT'S STOLEN FROM HOPLIB :teeth:
@@ -35,7 +25,7 @@ function VojinLIB:Setup()
         self._required_script[file_name] = true
     end
 
-    local require = mod_path .. "req/"
+    local require = self._mod_path .. "req/"
     for _, v in ipairs(file.GetFiles(require)) do
         if not self._req[v] and io.file_is_readable(require .. v) then
             dofile(require .. v)
