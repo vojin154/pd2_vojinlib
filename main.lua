@@ -35,9 +35,6 @@ function VojinLIB:Setup()
         self._required_script[file_name] = true
     end
 
-    function self.user_name()
-    end
-
     local require = mod_path .. "req/"
     for _, v in ipairs(file.GetFiles(require)) do
         if not self._req[v] and io.file_is_readable(require .. v) then
