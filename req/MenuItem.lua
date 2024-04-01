@@ -102,3 +102,13 @@ local slider = menu_item.Slider
 --core\lib\managers\menu\items\coremenuitemtoggle.lua
 menu_item.Toggle = {}
 local toggle = menu_item.Toggle
+
+--lib\managers\menu\items\menuitemmultichoice.lua
+menu_item.MultiChoice = {}
+local multi_choice = menu_item.MultiChoice
+
+--[[function multi_choice:set_option_color(row_item, index, color)
+    local item_option = row_item:options()[index]
+    set_parameter(item_option, "color", color)
+end]]
+
