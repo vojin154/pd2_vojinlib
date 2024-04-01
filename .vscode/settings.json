@@ -7,6 +7,8 @@
         "RequiredScript",
         "file",
         "ModPath",
-        "SavePath"
+        "SavePath",
+        "type_name",
+        "log"
     ]
 }

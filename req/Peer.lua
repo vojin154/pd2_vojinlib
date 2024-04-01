@@ -4,12 +4,12 @@ end
 
 VojinLIB.Peer = {}
 local peer = VojinLIB.Peer
-local session = managers.network:session()
 
 ---@param id number @Number of the peer
 ---@return table|nil peer @Table with peer information or nil
 function peer:get_peer(id)
-    return session:peer(id)
+    local session = managers.network:session()
+    return session and session:peer(id)
 end
 
 ---@param id number @Number of the peer
@@ -20,5 +20,6 @@ end
 
 ---@return table peer @Table with local player information
 function peer:local_player()
-    return session:local_peer()
+    local session = managers.network:session()
+    return session and session:local_peer()
 end
