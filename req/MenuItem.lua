@@ -23,7 +23,7 @@ end
 VojinLIB.MenuItem = {}
 local menu_item = VojinLIB.MenuItem
 
-function MenuItem:get_item_index(node, name, after)
+function menu_item:get_item_index(node, name, after)
     for i, v in pairs(node:items()) do
         if v:parameters().name == "achievements" then
             if after then
