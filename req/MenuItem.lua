@@ -107,6 +107,18 @@ local toggle = menu_item.Toggle
 menu_item.MultiChoice = {}
 local multi_choice = menu_item.MultiChoice
 
+--[[
+    row_item.gui_text:set_color(row_item.color)
+	row_item.choice_text:set_color(not self._enabled and row_item.disabled_color or self:selected_option():parameters().color or node.row_item_hightlight_color)
+	row_item.choice_text:set_alpha(self._enabled and 1 or 0.75)
+	row_item.arrow_left:set_image("guis/textures/menu_arrows", 24, 0, 24, 24)
+	row_item.arrow_right:set_image("guis/textures/menu_arrows", 48, 0, -24, 24)
+	row_item.arrow_left:set_color(not self._enabled and row_item.disabled_color or self:left_arrow_visible() and tweak_data.screen_colors.button_stage_2 or tweak_data.screen_colors.button_stage_3)
+	row_item.arrow_right:set_color(not self._enabled and row_item.disabled_color or self:right_arrow_visible() and tweak_data.screen_colors.button_stage_2 or tweak_data.screen_colors.button_stage_3)
+	row_item.arrow_left:set_alpha(self._enabled and 1 or 0.75)
+	row_item.arrow_right:set_alpha(self._enabled and 1 or 0.75)
+]]
+
 --[[function multi_choice:set_option_color(row_item, index, color)
     local item_option = row_item:options()[index]
     set_parameter(item_option, "color", color)
