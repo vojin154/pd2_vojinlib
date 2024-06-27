@@ -13,41 +13,23 @@ function tables:changed(tbl, id, clbk)
     end
 
     local old_meta = getmetatable(tbl)
-    local meta = old_meta or {}
+    local new_tbl = {}
 
-    local method = get_method("changed")
-    method[id] = method[id] or {}
-
-    local entry = method[id]
-    local old_clbk = entry.clbk
-
-    local old_newindex = meta.__newindex
-
-    entry = {
-        meta = meta,
-        clbk = clbk or old_clbk,
-        old_newindex = old_newindex
+    local new_meta = {
+        __index = old_meta,
+        __newindex = function(t, k, v)
+            old_meta[k] = v
+            clbk(k, v)
+        end
     }
 
-    meta.__newindex = function(t, i, v)
-        if old_newindex then
-            old_newindex(t, i, v)
-        end
+    get_method("changed")[id] = {
+        tbl = tbl,
+        old = old_meta,
+        new = new_meta
+    }
 
-        clbk(i, v)
-    end
-
-    if not old_meta then
-        setmetatable(tbl, meta)
-    end
-
-    setmetatable(meta, {
-        __newindex = function(t, i, v)
-            if i == "__newindex" then
-                entry.old_newindex = v
-            end
-        end
-    })
+    setmetatable(tbl, new_meta)
 end
 
 local function disconnect_changed(id)
@@ -58,7 +40,8 @@ local function disconnect_changed(id)
         return
     end
 
-    entry.__newindex = entry.old_newindex or nil
+    setmetatable(entry.tbl, entry.old)
+    method[id] = nil
 end
 
 local function disconnect_all(id)
