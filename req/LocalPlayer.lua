@@ -1,9 +1,4 @@
-if not VojinLIB then
-    return
-end
-
-VojinLIB.LocalPlayer = {}
-local player = VojinLIB.LocalPlayer
+local player = VojinLIB:create_class("LocalPlayer")
 
 function player:is_online()
     local is_signed_in = self:is_signed_in()

@@ -9,6 +9,7 @@
         "ModPath",
         "SavePath",
         "type_name",
-        "log"
+        "log",
+        "EpicMM"
     ]
 }

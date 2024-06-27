@@ -1,9 +1,4 @@
-if not VojinLIB then
-    return
-end
-
-VojinLIB.Hooks = {}
-local hooks = VojinLIB.Hooks
+local hooks = VojinLIB:create_class("Hooks")
 
 ---Is used as a base to add some type of an update function
 ---@param type string @String, that defines which update function to hook to

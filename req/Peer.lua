@@ -1,9 +1,4 @@
-if not VojinLIB then
-    return
-end
-
-VojinLIB.Peer = {}
-local peer = VojinLIB.Peer
+local peer = VojinLIB:create_class("Peer")
 
 ---@param id number @Number of the peer
 ---@return table|nil peer @Table with peer information or nil
