@@ -7,8 +7,19 @@ local function get_method(type)
     return table._method[type:lower()]
 end
 
+local function set_metamethod(tbl, meta_tbl)
+    local old_meta = getmetatable(tbl) or {}
+    local new_meta = meta_tbl or {}
+
+    for i, v in pairs(old_meta) do
+        new_meta[i] = v
+    end
+
+    return new_meta
+end
+
 function tables:changed(tbl, id, clbk)
-    if (not tbl) or (not clbk) then
+    if (not tbl) or (not id) or (not clbk) then
         return
     end
 
@@ -18,12 +29,7 @@ function tables:changed(tbl, id, clbk)
     local entry = method[id]
     local old_clbk = entry.clbk
 
-    local old_meta = getmetatable(tbl)
-    local new_meta = {}
-
-    for i, v in pairs(old_meta) do
-        new_meta[i] = v
-    end
+    local new_meta = set_metamethod(tbl, {})
 
     local old_newindex = new_meta.__newindex
 
